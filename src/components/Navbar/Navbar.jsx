@@ -1,41 +1,65 @@
-import React from 'react';
-import { FaSearch, FaShoppingCart } from 'react-icons/fa';
-import { FiChevronDown } from 'react-icons/fi';
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { FaSearch, FaShoppingCart, FaCaretDown } from "react-icons/fa";
+import DarkMode from "./DarkMode";
 
 function Navbar() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const DropdownLinks = [
+    { id: 1, name: "Trending Products", link: "/#" },
+    { id: 2, name: "Best Selling", link: "/#" },
+    { id: 3, name: "Top Rated", link: "/#" },
+  ];
+
+  // Functions to handle mouse events
+  const handleMouseEnter = () => {
+    setDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setDropdownOpen(false);
+  };
+
   return (
-    <nav className="bg-gray-900 text-white py-4 px-8 flex items-center justify-between">
-      <div className="flex items-center space-x-4">
-        <a href="#" className="text-primary text-2xl font-semibold tracking-widest uppercase sm:text-3xl ">DSHOP</a>
+    <nav className="bg-gray-900 text-gray-400 py-6 px-8 flex items-center justify-between">
+      <div className="flex items-center space-x-10">
+        <a href="#" className="text-primary text-2xl font-semibold tracking-widest uppercase sm:text-3xl">
+          ESHOP
+        </a>
         <ul className="flex space-x-8">
-          <li><a href="#" className="hover:text-gray-400">Home</a></li>
-          <li><a href="#" className="hover:text-gray-400">Shop</a></li>
-          <li><a href="#" className="hover:text-gray-400">About</a></li>
-          <li><a href="#" className="hover:text-gray-400">Blogs</a></li>
-          <li className="relative group">
-            <a href="#" className="hover:text-gray-400 flex items-center">
-              Quick Links <FiChevronDown className="ml-1"/>
+          <li><a href="#" className="hover:text-white">Home</a></li>
+          <li><a href="#" className="hover:text-white">Shop</a></li>
+          <li><a href="#" className="hover:text-white">About</a></li>
+          <li><a href="#" className="hover:text-white">Blogs</a></li>
+          <li className="relative"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}>
+            <a href="#" className="hover:text-white flex items-center">
+              Quick Links <FaCaretDown className="ml-1 transform duration-300" style={{ transform: dropdownOpen ? 'rotate(180deg)' : 'rotate(0)' }} />
             </a>
+            {/* Dropdown */}
+            {dropdownOpen && (
+              <ul className="absolute left-0 w-48 mt-2 bg-gray-800 text-white shadow-lg rounded-md z-10">
+                {DropdownLinks.map((item) => (
+                  <li key={item.id} className="px-4 py-2 hover:bg-red-500">
+                    <a href={item.link}>{item.name}</a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         </ul>
       </div>
-
-      <div className="flex items-center space-x-4">
-        <FaSearch className="hover:text-gray-400 cursor-pointer" />
+      <div className="flex items-center space-x-10">
+        <div className="relative group hidden sm:block">
+          <input type="text" placeholder="Search" className="search-bar" />
+          <FaSearch className="text-gray-600 text-xl cursor-pointer group-hover:text-primary absolute top-1/2 -translate-y-1/2 right-3 duration-200" />
+        </div>
         <div className="relative">
-          <FaShoppingCart className="hover:text-gray-400 cursor-pointer" />
-          <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">4</span>
+          <FaShoppingCart className="text-gray-500 text-xl cursor-pointer" />
+          <span className="absolute top-0 right-0 inline-flex items-center justify-center w-4 h-4 text-xs leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">4</span>
         </div>
-        <div className="flex items-center">
-          <label className="inline-flex items-center cursor-pointer">
-            <span className="relative">
-              <input type="checkbox" className="hidden" />
-              <span className="w-10 h-6 bg-gray-400 rounded-full shadow-inner"></span>
-              <span className="absolute  w-4 h-4 bg-white rounded-full shadow inset-y-0 left-0" style={{ transform: "translateX(0)" }}></span>
-            </span>
-          </label>
-        </div>
+        <DarkMode />
       </div>
     </nav>
   );
