@@ -3,7 +3,7 @@ import headphoneImage from '../../assets/hero/headphone.png';
 
 const Banner = () => {
     return (
-        <div className="h-screen flex items-center justify-between px-20 bg-gradient-to-r from-gray-900 to-gray-800  ">
+        <div className="h-screen flex items-center justify-between px-28 bg-gradient-to-r from-gray-900 to-gray-800  ">
             <div className="text-white">
                 <p className="text-lg font-semibold">Beats Solo</p>
                 <h1 className="text-7xl font-bold">Wireless</h1>

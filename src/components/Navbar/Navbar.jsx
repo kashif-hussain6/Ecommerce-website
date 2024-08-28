@@ -4,6 +4,7 @@ import DarkMode from "./DarkMode";
 
 function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  let timeoutId = null;
 
   const DropdownLinks = [
     { id: 1, name: "Trending Products", link: "/#" },
@@ -11,13 +12,15 @@ function Navbar() {
     { id: 3, name: "Top Rated", link: "/#" },
   ];
 
-  // Functions to handle mouse events
   const handleMouseEnter = () => {
+    clearTimeout(timeoutId);  
     setDropdownOpen(true);
   };
 
   const handleMouseLeave = () => {
-    setDropdownOpen(false);
+    timeoutId = setTimeout(() => {
+      setDropdownOpen(false);
+    }, 300); 
   };
 
   return (
@@ -35,13 +38,12 @@ function Navbar() {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}>
             <a href="#" className="hover:text-white flex items-center">
-              Quick Links <FaCaretDown className="ml-1 transform duration-300" style={{ transform: dropdownOpen ? 'rotate(180deg)' : 'rotate(0)' }} />
+              Quick Links <FaCaretDown className="ml-1 transform duration-200" style={{ transform: dropdownOpen ? 'rotate(180deg)' : 'rotate(0)' }} />
             </a>
-            {/* Dropdown */}
             {dropdownOpen && (
-              <ul className="absolute left-0 w-48 mt-2 bg-gray-800 text-white shadow-lg rounded-md z-10">
+              <ul className="absolute left-0 w-48 mt-2 p-2 bg-gray-800 text-white shadow-lg rounded-md z-10">
                 {DropdownLinks.map((item) => (
-                  <li key={item.id} className="px-4 py-2 hover:bg-red-500">
+                  <li key={item.id} className=" hover:bg-primary/20 font-semibold rounded-md space-y-3 p-2  w-full inline-block ">
                     <a href={item.link}>{item.name}</a>
                   </li>
                 ))}
