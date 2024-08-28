@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaSearch, FaShoppingCart, FaCaretDown } from "react-icons/fa";
 import DarkMode from "./DarkMode";
 
+
 function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   let timeoutId = null;
