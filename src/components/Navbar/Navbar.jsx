@@ -137,4 +137,3 @@ const Navbar = ({ handleOrderPopup }) => {
 
 export default Navbar;
 
-// overflow-hidden rounded-3xl min-h-[550px] sm:min-h-[650px] flex justify-center items-center
