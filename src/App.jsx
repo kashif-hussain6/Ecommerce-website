@@ -13,7 +13,7 @@ import Hero from "./components/Hero/Hero";
 // // import Products from "./components/Products/Products";
 // // import Blogs from "./components/Blogs/Blogs";
 // // import Footer from "./components/Footer/Footer.jsx";
-// // import Popup from "./components/Popup/Popup.jsx";
+// import Popup from "./components/Popup/Popup.jsx";
 // import AOS from "aos";
 // import "aos/dist/aos.css";
 
