@@ -120,8 +120,9 @@ const Navbar = ({ handleOrderPopup }) => {
             {/* Order-button section */}
             <button className="relative p-3" onClick={handleOrderPopup}>
               <FaCartShopping className="text-xl text-gray-600 dark:text-gray-400" />
-              <div className="w-4 h-4 bg-red-500 text-white rounded-full absolute top-0 right-0 flex items-center justify-center text-xs">
+              <div className="w-4 h-4   bg-red-500 text-white rounded-full absolute top-0 right-0 flex items-center justify-center text-xs">
                 4
+                <span class="animate-ping absolute inline-flex p-[7px] rounded-full bg-red-400 opacity-75"></span>
               </div>
             </button>
             {/* Dark Mode section */}
