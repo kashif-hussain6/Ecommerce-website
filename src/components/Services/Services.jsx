@@ -22,14 +22,14 @@ const ServiceData = [
   {
     id: 1,
     icon: <FaHeadphonesAlt className="text-4xl md:text-5xl text-primary" />,
-    title: "Free Shipping",
-    description: "Free Shipping On All Order",
+    title: "Online Supoort 24/7",
+    description: "Technical Support 24/7",
   },
   {
     id: 2,
     icon: <FaWallet className="text-4xl md:text-5xl text-primary" />,
-    title: "Safe Money ",
-    description: "30 Days Money Back",
+    title: "Secure Payment",
+    description: "All Payment Secure",
   },
 
 ];
