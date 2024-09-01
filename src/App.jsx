@@ -4,7 +4,7 @@ import Hero from "./components/Hero/Hero";
 import Category from "./components/Category/Category";
 import Category2 from "./components/Category/Category2";
 import Services from "./components/Services/Services";
-// import Banner from "./components/Banner/Banner";
+import Banner from "./components/Banner/Banner";
 // // import Partners from "./components/Partners/Partners.jsx";
 
 // import headphone from "./assets/hero/headphone.png";
@@ -65,10 +65,12 @@ const App = () => {
       <Category />
       <Category2 />
       <Services />
+      
+      <Banner  />
+
       {/* <Hero handleOrderPopup={handleOrderPopup} />
       
     
-      <Banner data={BannerData} />
       <Products />
       <Banner data={BannerData2} />
       <Blogs />
