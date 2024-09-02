@@ -5,12 +5,12 @@ import Category from "./components/Category/Category";
 import Category2 from "./components/Category/Category2";
 import Services from "./components/Services/Services";
 import Banner from "./components/Banner/Banner";
+import Heading from "./components/Shared/Heading"; // Corrected import path
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 // Import images
 import headphone from "./assets/hero/headphone.png";
-// import smartwatch2 from "./assets/category/smartwatch2-removebg-preview.png";
 
 const BannerData = {
   discount: "30% OFF",
@@ -23,18 +23,6 @@ const BannerData = {
     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque reiciendis",
   bgColor: "#f42c37",
 };
-
-// const BannerData2 = {
-//   discount: "30% OFF",
-//   title: "Happy Hours",
-//   date: "14 Jan to 28 Jan",
-//   image: smartwatch2,
-//   title2: "Smart Solo",
-//   title3: "Winter Sale",
-//   title4:
-//     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque reiciendis",
-//   bgColor: "#2dcc6f",
-// };
 
 const App = () => {
   React.useEffect(() => {
@@ -54,8 +42,8 @@ const App = () => {
       <Category />
       <Category2 />
       <Services />
-      {/* <Banner data={BannerData2} /> */}
       <Banner data={BannerData} />
+      <Heading title="Welcome to My App" subtitle="Explore our features" />
     </div>
   );
 };
