@@ -66,7 +66,7 @@ const ProductsData2 = [
   {
     id: 4,
     img: Img5,
-    title: "Printed ",
+    title: "Printed",
     price: "220",
     aosDelay: "600",
   },

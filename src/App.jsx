@@ -46,6 +46,7 @@ const App = () => {
             <Banner data={BannerData} />
             <Products />
             <Heading title="Welcome to My App" subtitle="Explore our features" />
+            <Popup/>
 
         </div>
     );
