@@ -6,6 +6,7 @@ import Category2 from './components/Category/Category2';
 import Services from './components/Services/Services';
 import Banner from './components/Banner/Banner';
 import Heading from './components/Shared/Heading';
+import Popup from './components/Popup/Popup'; // Import Popup component
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -26,6 +27,12 @@ const BannerData = {
 };
 
 const App = () => {
+    const [orderPopup, setOrderPopup] = React.useState(false); // State to manage popup visibility
+
+    const handleOrderPopup = () => { // Function to toggle popup
+        setOrderPopup(!orderPopup);
+    };
+
     React.useEffect(() => {
         AOS.init({
             duration: 800,
@@ -38,16 +45,15 @@ const App = () => {
 
     return (
         <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 overflow-hidden">
-            <Navbar />
-            <Hero />
+            <Navbar handleOrderPopup={handleOrderPopup} />
+            <Hero handleOrderPopup={handleOrderPopup} />
             <Category />
             <Category2 />
             <Services />
             <Banner data={BannerData} />
             <Products />
             <Heading title="Welcome to My App" subtitle="Explore our features" />
-            <Popup/>
-
+            <Popup orderPopup={orderPopup} handleOrderPopup={handleOrderPopup} /> 
         </div>
     );
 };
