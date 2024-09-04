@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../Shared/Button";
 
-const ProductCard = ({ data }) => {
+const ProductCard = ({ data, orderPopup, handleOrderPopup }) => {
   return (
     <div className="mb-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 place-items-center">
@@ -25,6 +25,8 @@ const ProductCard = ({ data }) => {
                   text={"Add to cart"}
                   bgColor={"bg-primary"}
                   textColor={"text-white"}
+                  orderPopup={orderPopup}
+                  handler={handleOrderPopup}
                 />
               </div>
             </div>

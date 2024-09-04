@@ -71,19 +71,24 @@ const ProductsData2 = [
     aosDelay: "600",
   },
 ];
-const Products = () => {
+const Products = ({ orderPopup, handleOrderPopup }) => {
   return (
     <div>
       <div className="container">
         {/* Header section */}
         <Heading title="Our Products" subtitle={"Explore Our Products"} />
         {/* Body section */}
-        <ProductCard data={ProductsData} />
-        <ProductCard data={ProductsData2} />
+        <ProductCard
+          data={ProductsData}
+          ordePopup={orderPopup}
+          handleOrderPopup={handleOrderPopup}
+        />
+        <ProductCard data={ProductsData2} 
+         ordePopup={orderPopup}
+         handleOrderPopup={handleOrderPopup} />
       </div>
     </div>
   );
 };
 
 export default Products;
-
