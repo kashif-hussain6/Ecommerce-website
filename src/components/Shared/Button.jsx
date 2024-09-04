@@ -12,3 +12,4 @@ const Button = ({ text, bgColor, textColor, handler = () => {} }) => {
 };
 
 export default Button;
+  

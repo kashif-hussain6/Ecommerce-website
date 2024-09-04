@@ -51,7 +51,7 @@ const App = () => {
             <Category2 />
             <Services />
             <Banner data={BannerData} />
-            <Products />
+            <Products orderPopup={orderPopup} handleOrderPopup={handleOrderPopup} />
             <Heading title="Welcome to My App" subtitle="Explore our features" />
             <Popup orderPopup={orderPopup} handleOrderPopup={handleOrderPopup} /> 
         </div>
