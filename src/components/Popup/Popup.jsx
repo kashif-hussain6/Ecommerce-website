@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IoCloseOutline } from 'react-icons/io5';
 import Button from '../Shared/Button';
 
@@ -13,6 +13,60 @@ const Popup = ({
   setQuantity, 
   isLoggedIn 
 }) => {
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        address: '',
+    });
+    const [formErrors, setFormErrors] = useState({
+        name: false,
+        email: false,
+        address: false,
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setForm({
+            ...form,
+            [name]: value
+        });
+    };
+
+    const validateForm = () => {
+        let isValid = true;
+        const errors = {
+            name: false,
+            email: false,
+            address: false,
+        };
+
+        if (!form.name) {
+            errors.name = true;
+            isValid = false;
+        }
+
+        if (!form.email) {
+            errors.email = true;
+            isValid = false;
+        }
+
+        if (!form.address) {
+            errors.address = true;
+            isValid = false;
+        }
+
+        setFormErrors(errors);
+        return isValid;
+    };
+
+    const handleLoginClick = () => {
+        if (validateForm()) {
+            handleLogin(); // Perform login
+            setForm({ name: '', email: '', address: '' }); // Clear form data
+            setFormErrors({ name: false, email: false, address: false }); // Clear form errors
+        }
+    };
+
     return (
         <>
             {/* Login Popup */}
@@ -26,12 +80,39 @@ const Popup = ({
                         />
                         <h1 className="text-center mb-4">Login</h1>
                         <div className="mt-4">
-                            <input type="text" placeholder="Name" className="form-input mb-2" />
-                            <input type="email" placeholder="Email" className="form-input mb-2" />
-                            <input type="text" placeholder="Address" className="form-input mb-2" />
+                            <input 
+                                type="text" 
+                                name="name" 
+                                value={form.name}
+                                onChange={handleInputChange}
+                                placeholder="Name" 
+                                className={`form-input mb-2 ${formErrors.name ? 'border-red-500' : ''}`}
+                            />
+                            {formErrors.name && <p className="text-red-500 text-sm">Name is required</p>}
+                            
+                            <input 
+                                type="email" 
+                                name="email" 
+                                value={form.email}
+                                onChange={handleInputChange}
+                                placeholder="Email" 
+                                className={`form-input mb-2 ${formErrors.email ? 'border-red-500' : ''}`}
+                            />
+                            {formErrors.email && <p className="text-red-500 text-sm">Email is required</p>}
+                            
+                            <input 
+                                type="text" 
+                                name="address" 
+                                value={form.address}
+                                onChange={handleInputChange}
+                                placeholder="Address" 
+                                className={`form-input mb-2 ${formErrors.address ? 'border-red-500' : ''}`}
+                            />
+                            {formErrors.address && <p className="text-red-500 text-sm">Address is required</p>}
+                            
                             <div className="flex justify-center mt-4">
                                 <button
-                                    onClick={handleLogin}
+                                    onClick={handleLoginClick}
                                     className="bg-primary w-full text-white py-2 px-4 rounded-full"
                                 >
                                     Login

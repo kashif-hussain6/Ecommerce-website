@@ -5,11 +5,12 @@ import Category from './components/Category/Category';
 import Category2 from './components/Category/Category2';
 import Services from './components/Services/Services';
 import Banner from './components/Banner/Banner';
-import Heading from './components/Shared/Heading';
 import Popup from './components/Popup/Popup';
 import Products from './components/Products/Products';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Import images
 import headphone from './assets/hero/headphone.png';
@@ -26,25 +27,26 @@ const BannerData = {
 };
 
 const App = () => {
-    const [orderPopup, setOrderPopup] = React.useState(false); // State to manage order popup visibility
-    const [loginPopup, setLoginPopup] = React.useState(false); // State to manage login popup visibility
-    const [isLoggedIn, setIsLoggedIn] = React.useState(false); // State to track if user is logged in
+    const [orderPopup, setOrderPopup] = React.useState(false);
+    const [loginPopup, setLoginPopup] = React.useState(false); 
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false); 
 
     const handleOrderPopup = () => {
         if (!isLoggedIn) {
-            setLoginPopup(true); // Show login popup if not logged in
+            setLoginPopup(true); 
         } else {
-            setOrderPopup(!orderPopup); // Toggle order popup
+            setOrderPopup(!orderPopup); 
         }
     };
 
     const handleLoginPopup = () => {
-        setLoginPopup(!loginPopup); // Toggle login popup
+        setLoginPopup(!loginPopup); 
     };
 
     const handleLogin = () => {
-        setIsLoggedIn(true); // Set user as logged in
-        setLoginPopup(false); // Close login popup
+        setIsLoggedIn(true); 
+        setLoginPopup(false); 
+        toast.success('Logged in successfully!');
     };
 
     React.useEffect(() => {
@@ -69,14 +71,29 @@ const App = () => {
                 orderPopup={orderPopup} 
                 handleOrderPopup={handleOrderPopup} 
                 isLoggedIn={isLoggedIn} 
+                handleLoginPopup={handleLoginPopup} 
+                handleLogin={handleLogin} 
             />
-            <Heading title="Welcome to My App" subtitle="Explore our features" />
             <Popup 
                 orderPopup={orderPopup} 
                 handleOrderPopup={handleOrderPopup} 
-                loginPopup={loginPopup}
+                loginPopup={loginPopup} 
                 handleLoginPopup={handleLoginPopup} 
                 handleLogin={handleLogin} 
+                isLoggedIn={isLoggedIn} 
+            />
+            <ToastContainer
+                position="top-center"
+                autoClose={5000} 
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light" 
+                className="custom-toast-container" 
             />
         </div>
     );
