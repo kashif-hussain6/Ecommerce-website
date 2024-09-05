@@ -30,7 +30,7 @@ const App = () => {
     const [orderPopup, setOrderPopup] = React.useState(false);
     const [loginPopup, setLoginPopup] = React.useState(false);
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-    const [cartCount, setCartCount] = React.useState(0); // State for cart count
+    const [cartCount, setCartCount] = React.useState(0); 
 
     const handleOrderPopup = () => {
         if (!isLoggedIn) {
@@ -51,7 +51,7 @@ const App = () => {
     };
 
     const addToCart = () => {
-        setCartCount(cartCount + 1); // Increment cart count
+        setCartCount(cartCount + 1); 
     };
 
     React.useEffect(() => {
@@ -69,7 +69,7 @@ const App = () => {
             <Navbar 
                 handleLoginPopup={handleLoginPopup} 
                 isLoggedIn={isLoggedIn} 
-                cartCount={cartCount} // Pass cart count to Navbar
+                cartCount={cartCount} 
             />
             <Hero handleOrderPopup={handleOrderPopup} />
             <Category />
@@ -82,7 +82,7 @@ const App = () => {
                 isLoggedIn={isLoggedIn} 
                 handleLoginPopup={handleLoginPopup} 
                 handleLogin={handleLogin} 
-                addToCart={addToCart} // Pass addToCart function to Products
+                addToCart={addToCart} 
             />
             <Popup 
                 orderPopup={orderPopup} 
