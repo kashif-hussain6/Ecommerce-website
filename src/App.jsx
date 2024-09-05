@@ -28,25 +28,30 @@ const BannerData = {
 
 const App = () => {
     const [orderPopup, setOrderPopup] = React.useState(false);
-    const [loginPopup, setLoginPopup] = React.useState(false); 
-    const [isLoggedIn, setIsLoggedIn] = React.useState(false); 
+    const [loginPopup, setLoginPopup] = React.useState(false);
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+    const [cartCount, setCartCount] = React.useState(0); // State for cart count
 
     const handleOrderPopup = () => {
         if (!isLoggedIn) {
-            setLoginPopup(true); 
+            setLoginPopup(true);
         } else {
-            setOrderPopup(!orderPopup); 
+            setOrderPopup(!orderPopup);
         }
     };
 
     const handleLoginPopup = () => {
-        setLoginPopup(!loginPopup); 
+        setLoginPopup(!loginPopup);
     };
 
     const handleLogin = () => {
-        setIsLoggedIn(true); 
-        setLoginPopup(false); 
+        setIsLoggedIn(true);
+        setLoginPopup(false);
         toast.success('Logged in successfully!');
+    };
+
+    const addToCart = () => {
+        setCartCount(cartCount + 1); // Increment cart count
     };
 
     React.useEffect(() => {
@@ -61,7 +66,11 @@ const App = () => {
 
     return (
         <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 overflow-hidden">
-            <Navbar handleLoginPopup={handleLoginPopup} isLoggedIn={isLoggedIn} />
+            <Navbar 
+                handleLoginPopup={handleLoginPopup} 
+                isLoggedIn={isLoggedIn} 
+                cartCount={cartCount} // Pass cart count to Navbar
+            />
             <Hero handleOrderPopup={handleOrderPopup} />
             <Category />
             <Category2 />
@@ -73,6 +82,7 @@ const App = () => {
                 isLoggedIn={isLoggedIn} 
                 handleLoginPopup={handleLoginPopup} 
                 handleLogin={handleLogin} 
+                addToCart={addToCart} // Pass addToCart function to Products
             />
             <Popup 
                 orderPopup={orderPopup} 
@@ -84,7 +94,7 @@ const App = () => {
             />
             <ToastContainer
                 position="top-center"
-                autoClose={5000} 
+                autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick
@@ -92,8 +102,7 @@ const App = () => {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
-                theme="light" 
-                className="custom-toast-container" 
+                theme="light"
             />
         </div>
     );
