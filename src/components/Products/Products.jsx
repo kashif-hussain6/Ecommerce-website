@@ -62,27 +62,14 @@ const Products = () => {
         <Popup
           orderPopup={orderPopup}
           handleOrderPopup={handleOrderPopup}
+          loginPopup={loginPopup}
+          handleLoginPopup={() => setLoginPopup(!loginPopup)}
+          handleLogin={handleLogin}
           product={selectedProduct}
           quantity={quantity}
           setQuantity={setQuantity}
+          isLoggedIn={isLoggedIn} // Pass login state to Popup
         />
-        {loginPopup && (
-          <div className="h-screen w-screen fixed top-0 left-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center">
-            <div className="w-[300px] p-4 shadow-md bg-white dark:bg-gray-900 dark:text-white duration-200 rounded-xl">
-              <h1 className="text-center mb-4">Login</h1>
-              <input type="text" placeholder="Name" className="form-input mb-2" />
-              <input type="email" placeholder="Email" className="form-input mb-2" />
-              <div className="flex justify-center mt-4">
-                <button
-                  onClick={handleLogin}
-                  className="bg-primary text-white py-2 px-4 rounded-full"
-                >
-                  Login
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
