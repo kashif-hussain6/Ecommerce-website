@@ -25,25 +25,17 @@ const ProductsData2 = [
   { id: 4, img: Img5, title: "Printed", price: "220", aosDelay: "600" },
 ];
 
-const Products = () => {
-  const [orderPopup, setOrderPopup] = useState(false);
-  const [loginPopup, setLoginPopup] = useState(false);
+const Products = ({ orderPopup, handleOrderPopup, isLoggedIn, handleLoginPopup, handleLogin, addToCart }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
 
-  const handleLogin = () => {
-    // Implement your login logic here
-    setIsLoggedIn(true);
-    setLoginPopup(false);
-  };
-
-  const handleOrderPopup = (product = null) => {
+  const handleOrderPopupWithProduct = (product) => {
     if (!isLoggedIn) {
-      setLoginPopup(true);
+      handleLoginPopup();
     } else {
       setSelectedProduct(product);
-      setOrderPopup(!orderPopup);
+      handleOrderPopup();
+      addToCart(); // Update cart count
     }
   };
 
@@ -53,22 +45,22 @@ const Products = () => {
         <Heading title="Our Products" subtitle="Explore Our Products" />
         <ProductCard
           data={ProductsData}
-          handleOrderPopup={handleOrderPopup}
+          handleOrderPopup={handleOrderPopupWithProduct}
         />
         <ProductCard
           data={ProductsData2}
-          handleOrderPopup={handleOrderPopup}
+          handleOrderPopup={handleOrderPopupWithProduct}
         />
         <Popup
           orderPopup={orderPopup}
           handleOrderPopup={handleOrderPopup}
-          loginPopup={loginPopup}
-          handleLoginPopup={() => setLoginPopup(!loginPopup)}
+          loginPopup={handleLoginPopup}
+          handleLoginPopup={() => handleLoginPopup()}
           handleLogin={handleLogin}
           product={selectedProduct}
           quantity={quantity}
           setQuantity={setQuantity}
-          isLoggedIn={isLoggedIn} // Pass login state to Popup
+          isLoggedIn={isLoggedIn} 
         />
       </div>
     </div>
