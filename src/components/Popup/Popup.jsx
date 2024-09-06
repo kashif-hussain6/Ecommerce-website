@@ -61,9 +61,9 @@ const Popup = ({
 
     const handleLoginClick = () => {
         if (validateForm()) {
-            handleLogin(); // Perform login
-            setForm({ name: '', email: '', address: '' }); // Clear form data
-            setFormErrors({ name: false, email: false, address: false }); // Clear form errors
+            handleLogin(); 
+            setForm({ name: '', email: '', address: '' }); 
+            setFormErrors({ name: false, email: false, address: false }); 
         }
     };
 

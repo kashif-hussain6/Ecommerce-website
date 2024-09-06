@@ -35,7 +35,7 @@ const Products = ({ orderPopup, handleOrderPopup, isLoggedIn, handleLoginPopup, 
     } else {
       setSelectedProduct(product);
       handleOrderPopup();
-      addToCart(); // Update cart count
+      addToCart();
     }
   };
 
