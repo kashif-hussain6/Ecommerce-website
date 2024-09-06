@@ -16,7 +16,7 @@ const DropdownLinks = [
     { id: 3, name: 'Top Rated', link: '/#' },
 ];
 
-const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount }) => {
+const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, toggleCart }) => {
     return (
         <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40">
             <div className="py-4">
@@ -84,7 +84,10 @@ const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount }) => {
                             <IoMdSearch className="text-xl text-gray-600 group-hover:text-primary dark:text-gray-400 absolute top-1/2 -translate-y-1/2 right-3 duration-200" />
                         </div>
                         {/* Order-button section */}
-                        <button className="relative p-3">
+                        <button
+                            className="relative p-3"
+                            onClick={toggleCart} // Toggle cart on click
+                        >
                             <FaCartShopping className="text-xl text-gray-600 dark:text-gray-400" />
                             <div className="w-4 h-4 bg-red-500 text-white rounded-full absolute top-0 right-0 flex items-center justify-center text-xs">
                                 {cartCount}

@@ -7,6 +7,7 @@ import Services from './components/Services/Services';
 import Banner from './components/Banner/Banner';
 import Popup from './components/Popup/Popup';
 import Products from './components/Products/Products';
+import CartSidebar from './components/CartSidebar/CartSidebar'; // Import CartSidebar
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -30,7 +31,8 @@ const App = () => {
     const [orderPopup, setOrderPopup] = React.useState(false);
     const [loginPopup, setLoginPopup] = React.useState(false);
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-    const [cartCount, setCartCount] = React.useState(0); 
+    const [cartItems, setCartItems] = React.useState([]);
+    const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
     const handleOrderPopup = () => {
         if (!isLoggedIn) {
@@ -50,8 +52,12 @@ const App = () => {
         toast.success('Logged in successfully!');
     };
 
-    const addToCart = () => {
-        setCartCount(cartCount + 1); 
+    const addToCart = (product) => {
+        setCartItems([...cartItems, product]);
+    };
+
+    const toggleCart = () => {
+        setSidebarOpen(!sidebarOpen);
     };
 
     React.useEffect(() => {
@@ -69,7 +75,8 @@ const App = () => {
             <Navbar 
                 handleLoginPopup={handleLoginPopup} 
                 isLoggedIn={isLoggedIn} 
-                cartCount={cartCount} 
+                cartCount={cartItems.length} 
+                toggleCart={toggleCart} // Pass toggleCart function
             />
             <Hero handleOrderPopup={handleOrderPopup} />
             <Category />
@@ -91,6 +98,11 @@ const App = () => {
                 handleLoginPopup={handleLoginPopup} 
                 handleLogin={handleLogin} 
                 isLoggedIn={isLoggedIn} 
+            />
+            <CartSidebar 
+                isCartOpen={sidebarOpen} 
+                toggleCart={toggleCart} 
+                cartItems={cartItems} 
             />
             <ToastContainer
                 position="top-center"
