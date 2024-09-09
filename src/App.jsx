@@ -14,6 +14,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // Import images    
 import headphone from './assets/hero/headphone.png';
+import watch from './assets/hero/watch.png';
+
 
 const BannerData = {
     discount: '30% OFF',
@@ -30,7 +32,7 @@ const BannerData2 = {
     discount: "30% OFF",
     title: "Happy Hours",
     date: "14 Jan to 28 Jan",
-    image: headphone ,
+    image: watch ,
     title2: "Smart Solo",
     title3: "Winter Sale",
     title4:
@@ -39,8 +41,7 @@ const BannerData2 = {
   };
 
 
-//   arthematic oppreator  
-// /6  add sub mul
+
   
 
 
