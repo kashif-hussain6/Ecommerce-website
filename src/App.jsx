@@ -12,7 +12,7 @@ import 'aos/dist/aos.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// Import images
+// Import images    
 import headphone from './assets/hero/headphone.png';
 
 const BannerData = {
@@ -38,6 +38,10 @@ const BannerData2 = {
     bgColor: "#2dcc6f",
   };
 
+
+//   arthematic oppreator  
+// /6  add sub mul
+  
 
 
 const App = () => {
@@ -121,6 +125,7 @@ const App = () => {
             <Banner data={BannerData2} />
             
         </div>
+
     );
 };
 
