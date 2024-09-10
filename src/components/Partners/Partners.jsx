@@ -7,8 +7,8 @@
 // agr ham oprators ma dakha 
 
 
-let a = 2;
-let b = 5 ;
+// let a = 2;
+// let b = 5 ;
 
-console.log("a=",a,"b=",b);
+// console.log("a=",a,"b=",b);
 
