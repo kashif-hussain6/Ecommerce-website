@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import headphone from './assets/hero/headphone.png';
 import watch from './assets/hero/watch.png';
 import Blogs from './components/Blogs/Blogs';
+import Partners from './components/Partners/Partners';
 
 
 const BannerData = {
@@ -133,6 +134,9 @@ const App = () => {
             <Banner data={BannerData2} />
 
             <Blogs/>
+            <Partners/>
+            
+            
             
         </div>
 
