@@ -64,7 +64,8 @@ const App = () => {
         setLoginPopup(!loginPopup);
     };
 
-    const handleLogin = () => {
+
+    const handleLogin = () => { 
         setIsLoggedIn(true);
         setLoginPopup(false);
         toast.success('Logged in successfully!');
@@ -72,10 +73,15 @@ const App = () => {
 
     const addToCart = () => {
         setCartCount(cartCount + 1); 
+
+        toast.success('Product added to cart!');
+
     };
+    
 
     React.useEffect(() => {
         AOS.init({
+            
             duration: 1000,
             easing: 'ease-in-sine',
             delay: 100,
