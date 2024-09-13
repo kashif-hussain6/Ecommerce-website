@@ -107,7 +107,7 @@ const Footer = () => {
                 {
                   <div className="flex items-center gap-3">
                     <FaLocationArrow />
-                    <p>Kashif Hussain  and Kashif Dayal</p>
+                    <p>Kashif Hussain  and Amjad</p>
                   </div>
                 }
                 {
