@@ -40,20 +40,20 @@ const Footer = () => {
             >
               Eshop
             </a>
-            <p className="text-gray-600 dark:text-white/70  lg:pr-24 pt-3">
+            {/* <p className="text-gray-600 dark:text-white/70  lg:pr-24 pt-3">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores
               alias cum
-            </p>
-            <p className="text-gray-500 mt-4">
+            </p> */}
+            {/* <p className="text-gray-500 mt-4">
               Made with 💖 by The Coding Journey
-            </p>
-            <a
+            </p> */}
+            {/* <a
               href="https://www.youtube.com/channel/UC1H-a1MKEFXRiFlGNLcy7gQ"
               target="_blank"
               className="inline-block bg-primary/90 text-white py-2 px-4 mt-4 text-sm rounded-full"
             >
               Visit our YouTube Channel
-            </a>
+            </a> */}
           </div>
 
           {/* Footer links */}
@@ -98,17 +98,17 @@ const Footer = () => {
             <div className="py-8 px-4 col-span-2 sm:col-auto">
               <h1 className="text-xl font-bold sm:text-left mb-3">Address</h1>
               <div>
-                <div className="flex items-center gap-3">
+                {/* <div className="flex items-center gap-3">
                   <FaLocationArrow />
-                  <p>Noida , Uttar Pradesh</p>
-                </div>
-                <div className="flex items-center gap-3 mt-6">
+                  <p>Kashif Hussain </p>
+                </div> */}
+                {/* <div className="flex items-center gap-3 mt-6">
                   <FaMobileAlt />
-                  <p>+91 1234567890</p>
-                </div>
+                  <p>+91-3129776466</p>
+                </div> */}
 
                 {/* social links */}
-                <div className="flex items-center gap-3 mt-6">
+                {/* <div className="flex items-center gap-3 mt-6">
                   <a href="#">
                     <FaInstagram className="text-3xl hover:text-primary duration-300" />
                   </a>
@@ -118,7 +118,7 @@ const Footer = () => {
                   <a href="#">
                     <FaLinkedin className="text-3xl hover:text-primary duration-200" />
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
