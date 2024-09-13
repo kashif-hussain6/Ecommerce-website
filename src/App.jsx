@@ -17,6 +17,7 @@ import headphone from './assets/hero/headphone.png';
 import watch from './assets/hero/watch.png';
 import Blogs from './components/Blogs/Blogs';
 import Partners from './components/Partners/Partners';
+import Footer from './components/Footer/Footer';
 
 
 const BannerData = {
@@ -135,6 +136,7 @@ const App = () => {
 
             <Blogs/>
             <Partners/>
+            <Footer/>
             
             
             
