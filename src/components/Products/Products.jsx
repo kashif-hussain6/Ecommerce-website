@@ -25,7 +25,14 @@ const ProductsData2 = [
   { id: 4, img: Img5, title: "Printed", price: "220", aosDelay: "600" },
 ];
 
-const Products = ({ orderPopup, handleOrderPopup, isLoggedIn, handleLoginPopup, handleLogin, addToCart }) => {
+const Products = ({
+  orderPopup,
+  handleOrderPopup,
+  isLoggedIn,
+  handleLoginPopup,
+  handleLogin,
+  addToCart,
+}) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
@@ -35,7 +42,7 @@ const Products = ({ orderPopup, handleOrderPopup, isLoggedIn, handleLoginPopup, 
     } else {
       setSelectedProduct(product);
       handleOrderPopup();
-      addToCart();
+      // Removed addToCart() from here
     }
   };
 
@@ -55,12 +62,13 @@ const Products = ({ orderPopup, handleOrderPopup, isLoggedIn, handleLoginPopup, 
           orderPopup={orderPopup}
           handleOrderPopup={handleOrderPopup}
           loginPopup={handleLoginPopup}
-          handleLoginPopup={() => handleLoginPopup()}
+          handleLoginPopup={handleLoginPopup}
           handleLogin={handleLogin}
           product={selectedProduct}
           quantity={quantity}
           setQuantity={setQuantity}
-          isLoggedIn={isLoggedIn} 
+          isLoggedIn={isLoggedIn}
+          addToCart={addToCart} // Passed addToCart here
         />
       </div>
     </div>
@@ -68,4 +76,3 @@ const Products = ({ orderPopup, handleOrderPopup, isLoggedIn, handleLoginPopup, 
 };
 
 export default Products;
-
