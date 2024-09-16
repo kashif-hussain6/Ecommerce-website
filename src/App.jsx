@@ -31,14 +31,15 @@ const BannerData = {
 };
 
 const BannerData2 = {
-  discount: '30% OFF',
-  title: 'Happy Hours',
-  date: '14 Jan to 28 Jan',
-  image: watch,
-  title2: 'Smart Solo',
-  title3: 'Winter Sale',
-  title4: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque reiciendis',
-  bgColor: '#2dcc6f',
+  discount: "30% OFF",
+  title: "Happy Hours",
+  date: "14 Jan to 28 Jan",
+  image: watch ,
+  title2: "Smart Solo",
+  title3: "Winter Sale",
+  title4:
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque reiciendis",
+  bgColor: "#2dcc6f",
 };
 
 const App = () => {
@@ -46,7 +47,7 @@ const App = () => {
   const [loginPopup, setLoginPopup] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [cartCount, setCartCount] = React.useState(0);
-  const [cartItems, setCartItems] = React.useState([]);
+  const [cartItems, setCartItems] = React.useState([]); // Cart items state
 
   const handleOrderPopup = () => {
     if (!isLoggedIn) {
@@ -60,26 +61,41 @@ const App = () => {
     setLoginPopup(!loginPopup);
   };
 
-  const handleLogin = () => {
+  const handleLogin = () => { 
     setIsLoggedIn(true);
     setLoginPopup(false);
     toast.success('Logged in successfully!');
   };
 
+  // Add to Cart function
   const addToCart = (product, quantity) => {
-    const existingItem = cartItems.find((item) => item.id === product.id);
+    // Check if the product is already in the cart
+    const existingItem = cartItems.find(item => item.id === product.id);
     if (existingItem) {
-      setCartItems(
-        cartItems.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
-        )
-      );
+      // Update the quantity
+      setCartItems(cartItems.map(item =>
+        item.id === product.id
+          ? { ...item, quantity: item.quantity + quantity }
+          : item
+      ));
     } else {
+      // Add new product to cart
       setCartItems([...cartItems, { ...product, quantity }]);
     }
 
-    setCartCount(cartCount + quantity);
+    setCartCount(cartCount + quantity); // Update cart count
+
     toast.success('Product added to cart!');
+  };
+
+  // Remove from Cart function
+  const removeFromCart = (productId) => {
+    const itemToRemove = cartItems.find(item => item.id === productId);
+    if (itemToRemove) {
+      setCartItems(cartItems.filter(item => item.id !== productId));
+      setCartCount(cartCount - itemToRemove.quantity); // Update cart count
+      toast.info('Product removed from cart!');
+    }
   };
 
   React.useEffect(() => {
@@ -94,24 +110,25 @@ const App = () => {
 
   return (
     <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 overflow-hidden">
-      <Navbar
-        handleLoginPopup={handleLoginPopup}
-        isLoggedIn={isLoggedIn}
+      <Navbar 
+        handleLoginPopup={handleLoginPopup} 
+        isLoggedIn={isLoggedIn} 
         cartCount={cartCount}
         cartItems={cartItems}
+        removeFromCart={removeFromCart} // Pass removeFromCart to Navbar
       />
       <Hero handleOrderPopup={handleOrderPopup} />
       <Category />
       <Category2 />
       <Services />
       <Banner data={BannerData} />
-      <Products
-        orderPopup={orderPopup}
-        handleOrderPopup={handleOrderPopup}
-        isLoggedIn={isLoggedIn}
-        handleLoginPopup={handleLoginPopup}
-        handleLogin={handleLogin}
-        addToCart={addToCart}
+      <Products 
+        orderPopup={orderPopup} 
+        handleOrderPopup={handleOrderPopup} 
+        isLoggedIn={isLoggedIn} 
+        handleLoginPopup={handleLoginPopup} 
+        handleLogin={handleLogin} 
+        addToCart={addToCart} 
       />
       <ToastContainer
         position="top-center"
@@ -126,9 +143,9 @@ const App = () => {
         theme="light"
       />
       <Banner data={BannerData2} />
-      <Blogs />
-      <Partners />
-      <Footer />
+      <Blogs/>
+      <Partners/>
+      <Footer/>
     </div>
   );
 };

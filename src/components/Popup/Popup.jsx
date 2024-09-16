@@ -13,7 +13,7 @@ const Popup = ({
   quantity,
   setQuantity,
   isLoggedIn,
-  addToCart, // Added addToCart to props
+  addToCart,
 }) => {
   const [form, setForm] = useState({
     name: "",
@@ -176,7 +176,7 @@ const Popup = ({
                   text="Order Now"
                   bgColor="bg-primary"
                   textColor="text-white"
-                  handler={handleOrderClick} // Updated handler
+                  handler={handleOrderClick}
                 />
               </div>
             </div>

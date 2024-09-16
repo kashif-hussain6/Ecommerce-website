@@ -1,3 +1,4 @@
+// Products.js
 import React, { useState } from 'react';
 import Heading from '../Shared/Heading';
 import ProductCard from './ProductCard';
