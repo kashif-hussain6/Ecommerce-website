@@ -1,7 +1,7 @@
 // Navbar.js
 import React, { useState } from 'react';
 import { IoMdSearch } from 'react-icons/io';
-import { FaCaretDown, FaCartShopping } from 'react-icons/fa6';
+import { FaCaretDown, FaCartShopping, FaTrash } from 'react-icons/fa6'; // Import FaTrash
 import DarkMode from './DarkMode';
 
 const MenuLinks = [
@@ -17,7 +17,7 @@ const DropdownLinks = [
   { id: 3, name: 'Top Rated', link: '/#' },
 ];
 
-const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, cartItems }) => {
+const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, cartItems, removeFromCart }) => {
   const [showCart, setShowCart] = useState(false);
 
   const handleCartClick = () => {
@@ -39,8 +39,8 @@ const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, cartItems }) => {
             {/* Menu Items */}
             <div className="hidden lg:block">
               <ul className="flex items-center gap-4">
-                {MenuLinks.map((data, index) => (
-                  <li key={index}>
+                {MenuLinks.map((data) => (
+                  <li key={data.id}>
                     <a
                       href={data.link}
                       className="inline-block px-4 font-semibold text-gray-500 hover:text-black dark:hover:text-white duration-200"
@@ -63,7 +63,7 @@ const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, cartItems }) => {
                   {/* Dropdown Links */}
                   <div className="absolute z-[9999] hidden group-hover:block w-[200px] rounded-md bg-white shadow-md dark:bg-gray-900 p-2 dark:text-white">
                     <ul className="space-y-2">
-                      {DropdownLinks.map((data, index) => (
+                      {DropdownLinks.map((data) => (
                         <li key={data.id}>
                           <a
                             className="text-gray-500 dark:hover:text-white duration-200 inline-block w-full p-2 hover:bg-primary/20 rounded-md font-semibold"
@@ -96,7 +96,6 @@ const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, cartItems }) => {
               {cartCount > 0 && (
                 <div className="w-4 h-4 bg-red-500 text-white rounded-full absolute top-0 right-0 flex items-center justify-center text-xs">
                   {cartCount}
-                  
                   <span className="animate-ping absolute inline-flex p-[7px] rounded-full bg-red-400 opacity-75"></span>
                 </div>
               )}
@@ -136,6 +135,13 @@ const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, cartItems }) => {
                       Total: ${item.price * item.quantity}
                     </p>
                   </div>
+                  <button
+                    onClick={() => removeFromCart(item.id)}
+                    className="text-red-500 hover:text-red-700 ml-4"
+                    title="Remove Item"
+                  >
+                    <FaTrash />
+                  </button>
                 </li>
               ))}
             </ul>
