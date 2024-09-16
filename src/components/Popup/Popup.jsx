@@ -12,6 +12,7 @@ const Popup = ({
   quantity,
   setQuantity,
   isLoggedIn,
+  addToCart, // Added addToCart to the props
 }) => {
   const [form, setForm] = useState({
     name: "",
@@ -65,6 +66,11 @@ const Popup = ({
       setForm({ name: "", email: "", address: "" });
       setFormErrors({ name: false, email: false, address: false });
     }
+  };
+
+  const handleOrderClick = () => {
+    addToCart();          // Call addToCart when "Order Now" is clicked
+    handleOrderPopup();   // Close the order popup
   };
 
   return (
@@ -143,7 +149,7 @@ const Popup = ({
             <div className="flex items-center justify-between">
               <h1>Order Now</h1>
               <IoCloseOutline
-                onClick={() => handleOrderPopup()}
+                onClick={handleOrderPopup}
                 className="text-2xl cursor-pointer text-gray-600 dark:text-gray-300"
               />
             </div>
@@ -169,7 +175,7 @@ const Popup = ({
                   text="Order Now"
                   bgColor="bg-primary"
                   textColor="text-white"
-                  handler={() => handleOrderPopup()}
+                  handler={handleOrderClick} // Updated handler
                 />
               </div>
             </div>
@@ -181,133 +187,3 @@ const Popup = ({
 };
 
 export default Popup;
-
-// let a = 2;
-// let b = 5;
-
-// console.log("a=", a, " & b=", b);
-// console.log("--a =", --a);
-
-
-// a = a+1
-// a--;
-// decrement 
-// a++; increment 
-// a =a-1
-
-
-
-
-// // post incremenst
-// console.log("a =", a++);
-// console.log("a =",a);
-// // post decrements //
-// console.log("a =", a--);
-// console.log("a =", a);
-
-//pre incremnts 
-
-//assignments oprators//
-
-//   =  , +=   , -=  ,  %=   ,/=   , **=
-
-//  let a = 4 ;
-
-// a **= 3; //  a = a**3; 4*3
-// console.log("**=" , a)
-
-
-//  Arthemitic oprators 
-// + , - ,  / , * , ** , % // simple oprators ha
-
-
-// uniary oprators 
-// 2-  types 
-// increment  (++)
-
-// decrement (--)
-
-// let a = 5 ;
-// let b = 3 ;
- 
-// console.log("a =",  a , "b = " , b );
-
-// a++;// a = a+1 
-// console.log("a++" , a);
-
-
-// b--;
-// console.log( "b--;",b);
-
-
-
-// post increments 
-// post decrments 
-
-// let a = 5 ;
-//  let b = 3 ;
-
-//  ++a;
-//  console.log("++a" , a  )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// asigment  op  ( += , -= , /= , **= , *= , %= )
-
-// compresion opratotrs (= , != , === , !===)
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
