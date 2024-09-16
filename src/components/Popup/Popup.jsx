@@ -1,3 +1,4 @@
+// Popup.js
 import React, { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import Button from "../Shared/Button";
@@ -12,7 +13,7 @@ const Popup = ({
   quantity,
   setQuantity,
   isLoggedIn,
-  addToCart, // Added addToCart to the props
+  addToCart, // Added addToCart to props
 }) => {
   const [form, setForm] = useState({
     name: "",
@@ -69,8 +70,8 @@ const Popup = ({
   };
 
   const handleOrderClick = () => {
-    addToCart();          // Call addToCart when "Order Now" is clicked
-    handleOrderPopup();   // Close the order popup
+    addToCart(product, parseInt(quantity)); // Pass product and quantity to addToCart
+    handleOrderPopup(); // Close the order popup
   };
 
   return (
