@@ -1,20 +1,14 @@
-// Navbar.js
 import React, { useState } from 'react';
 import { IoMdSearch } from 'react-icons/io';
-import { FaCaretDown, FaCartShopping, FaTrash } from 'react-icons/fa6'; // Import FaTrash
+import { FaCaretDown, FaCartShopping } from 'react-icons/fa6';
+import { Link } from 'react-scroll'; // Import react-scroll
 import DarkMode from './DarkMode';
 
 const MenuLinks = [
-  { id: 1, name: 'Home', link: '/#' },
-  { id: 2, name: 'Shop', link: '/#shop' },
-  { id: 3, name: 'About', link: '/#about' },
-  { id: 4, name: 'Blogs', link: '/#blog' },
-];
-
-const DropdownLinks = [
-  { id: 1, name: 'Trending Products', link: '/#' },
-  { id: 2, name: 'Best Selling', link: '/#' },
-  { id: 3, name: 'Top Rated', link: '/#' },
+  { id: 1, name: 'Home', link: 'home' },
+  { id: 2, name: 'Shop', link: 'shop' }, // Update the link to point to the 'shop' section
+  { id: 3, name: 'About', link: 'about' },
+  { id: 4, name: 'Blogs', link: 'blogs' },
 ];
 
 const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, cartItems, removeFromCart }) => {
@@ -41,12 +35,15 @@ const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, cartItems, removeFrom
               <ul className="flex items-center gap-4">
                 {MenuLinks.map((data) => (
                   <li key={data.id}>
-                    <a
-                      href={data.link}
-                      className="inline-block px-4 font-semibold text-gray-500 hover:text-black dark:hover:text-white duration-200"
+                    <Link
+                      to={data.link} // Points to the section's id
+                      smooth={true} // Smooth scroll animation
+                      duration={500} // Time to scroll
+                      offset={-70} // Adjust for sticky navbar height
+                      className="inline-block px-4 font-semibold text-gray-500 hover:text-black dark:hover:text-white duration-200 cursor-pointer"
                     >
                       {data.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
                 {/* Dropdown */}
@@ -63,16 +60,30 @@ const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, cartItems, removeFrom
                   {/* Dropdown Links */}
                   <div className="absolute z-[9999] hidden group-hover:block w-[200px] rounded-md bg-white shadow-md dark:bg-gray-900 p-2 dark:text-white">
                     <ul className="space-y-2">
-                      {DropdownLinks.map((data) => (
-                        <li key={data.id}>
-                          <a
-                            className="text-gray-500 dark:hover:text-white duration-200 inline-block w-full p-2 hover:bg-primary/20 rounded-md font-semibold"
-                            href={data.link}
-                          >
-                            {data.name}
-                          </a>
-                        </li>
-                      ))}
+                      <li>
+                        <a
+                          href="#"
+                          className="text-gray-500 dark:hover:text-white duration-200 inline-block w-full p-2 hover:bg-primary/20 rounded-md font-semibold"
+                        >
+                          Trending Products
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          className="text-gray-500 dark:hover:text-white duration-200 inline-block w-full p-2 hover:bg-primary/20 rounded-md font-semibold"
+                        >
+                          Best Selling
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          className="text-gray-500 dark:hover:text-white duration-200 inline-block w-full p-2 hover:bg-primary/20 rounded-md font-semibold"
+                        >
+                          Top Rated
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 </li>
@@ -107,53 +118,6 @@ const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, cartItems, removeFrom
           </div>
         </div>
       </div>
-
-      {/* Cart Popup */}
-      {showCart && (
-        <div className="absolute right-0 mt-2 w-96 bg-white shadow-lg rounded-lg p-4 z-50 dark:bg-gray-800">
-          <h2 className="text-lg font-semibold mb-4">Shopping Cart</h2>
-          {cartItems.length === 0 ? (
-            <p>Your cart is empty.</p>
-          ) : (
-            <ul className="space-y-4">
-              {cartItems.map((item) => (
-                <li key={item.id} className="flex items-center">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="w-16 h-16 object-cover rounded-md mr-4"
-                  />
-                  <div className="flex-1">
-                    <p className="font-semibold">{item.title}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Quantity: {item.quantity}
-                    </p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      Unit Price: ${item.price}
-                    </p>
-                    <p className="font-semibold">
-                      Total: ${item.price * item.quantity}
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => removeFromCart(item.id)}
-                    className="text-red-500 hover:text-red-700 ml-4"
-                    title="Remove Item"
-                  >
-                    <FaTrash />
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-          <button
-            onClick={() => setShowCart(false)}
-            className="mt-6 w-full bg-primary text-white py-2 rounded-md"
-          >
-            Close
-          </button>
-        </div>
-      )}
     </div>
   );
 };

@@ -47,7 +47,7 @@ const Products = ({
   };
 
   return (
-    <div>
+    <div id="shop"> {/* Added id="shop" */}
       <div className="container">
         <Heading title="Our Products" subtitle="Explore Our Products" />
         <ProductCard data={ProductsData} handleOrderPopup={handleOrderPopupWithProduct} />

@@ -1,8 +1,5 @@
-
 import React from "react";
 import Heading from "../Shared/Heading";
-
-// import images
 import Img1 from "../../assets/blogs/blog-1.jpg";
 import Img2 from "../../assets/blogs/blog-2.jpg";
 import Img3 from "../../assets/blogs/blog-3.jpg";
@@ -33,9 +30,10 @@ const BlogData = [
     aosDelay: "400",
   },
 ];
+
 const Blogs = () => {
   return (
-    <div className="my-12">
+    <div className="my-12" id="blogs"> {/* Added id="blogs" for linking */}
       <div className="container">
         {/* Header section */}
         <Heading title="Recent News" subtitle={"Explore Our Blogs"} />
@@ -54,7 +52,7 @@ const Blogs = () => {
               <div className="overflow-hidden rounded-2xl mb-2">
                 <img
                   src={data.image}
-                  alt=""
+                  alt={data.title}
                   className="w-full h-[220px] object-cover rounded-2xl hover:scale-105 duration-500"
                 />
               </div>
