@@ -11,7 +11,7 @@ const MenuLinks = [
   { id: 4, name: 'Blogs', link: 'blogs' },
 ];
 
-const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, cartItems }) => {
+const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, cartItems, removeFromCart }) => {
   const [showCart, setShowCart] = useState(false);
 
   const handleCartClick = () => {
