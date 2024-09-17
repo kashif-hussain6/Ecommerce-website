@@ -22,9 +22,7 @@ I will build a modern, responsive e-commerce website using **ReactJS** and **Tai
 
 ![Light Theme Preview](https://github.com/kashif-hussain6/Ecommerce-website/blob/master/LIGHT%20THEHE.png)
 
-### Dark Theme
 
-![Dark Theme Preview](./path_to_your_image/DARKTHEME.png)
 
 ## Installation
 
