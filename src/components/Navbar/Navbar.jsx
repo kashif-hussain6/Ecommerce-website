@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
-import { IoMdSearch } from 'react-icons/io';
-import { FaCaretDown, FaCartShopping } from 'react-icons/fa6';
-import { Link } from 'react-scroll'; // Import react-scroll
-import DarkMode from './DarkMode';
+import React, { useState } from "react";
+import { IoMdSearch } from "react-icons/io";
+import { FaCaretDown, FaCartShopping } from "react-icons/fa6";
+import { Link } from "react-scroll"; // Import react-scroll
+import DarkMode from "./DarkMode";
 
 const MenuLinks = [
-  { id: 1, name: 'Home', link: 'home' },
-  { id: 2, name: 'Shop', link: 'shop' }, // Update the link to point to the 'shop' section
-  { id: 3, name: 'About', link: 'about' },
-  { id: 4, name: 'Blogs', link: 'blogs' },
+  { id: 1, name: "Home", link: "home" },
+  { id: 2, name: "Shop", link: "shop" }, // Update the link to point to the 'shop' section
+  { id: 3, name: "Footer", link: "footer" },
+  { id: 4, name: "Blogs", link: "blogs" },
 ];
 
-const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, cartItems, removeFromCart }) => {
+const Navbar = ({
+  handleLoginPopup,
+  isLoggedIn,
+  cartCount,
+  cartItems,
+  removeFromCart,
+}) => {
   const [showCart, setShowCart] = useState(false);
 
   const handleCartClick = () => {
@@ -38,12 +44,13 @@ const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, cartItems, removeFrom
                     <Link
                       to={data.link} // Points to the section's id
                       smooth={true} // Smooth scroll animation
-                      duration={500} // Time to scroll
+                      duration={1000} // Time to scroll
                       offset={-70} // Adjust for sticky navbar height
                       className="inline-block px-4 font-semibold text-gray-500 hover:text-black dark:hover:text-white duration-200 cursor-pointer"
                     >
                       {data.name}
                     </Link>
+                  
                   </li>
                 ))}
                 {/* Dropdown */}
@@ -94,11 +101,7 @@ const Navbar = ({ handleLoginPopup, isLoggedIn, cartCount, cartItems, removeFrom
           <div className="flex justify-between items-center gap-4">
             {/* Search Bar section */}
             <div className="relative group hidden sm:block">
-              <input
-                type="text"
-                placeholder="Search"
-                className="search-bar"
-              />
+              <input type="text" placeholder="Search" className="search-bar" />
               <IoMdSearch className="text-xl text-gray-600 group-hover:text-primary dark:text-gray-400 absolute top-1/2 -translate-y-1/2 right-3 duration-200" />
             </div>
             {/* Cart Icon */}
