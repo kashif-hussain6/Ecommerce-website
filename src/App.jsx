@@ -115,7 +115,10 @@ const App = () => {
         isLoggedIn={isLoggedIn} 
         cartCount={cartCount}
         cartItems={cartItems}
-        removeFromCart={removeFromCart} // Pass removeFromCart to Navbar
+        removeFromCart={removeFromCart}
+        orderPopup={orderPopup} 
+        setOrderPopup={setOrderPopup}
+        handleOrderPopup={handleOrderPopup}  
       />
       <Hero handleOrderPopup={handleOrderPopup} />
       <Category />
