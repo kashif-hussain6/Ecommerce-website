@@ -18,6 +18,7 @@ import watch from './assets/hero/watch.png';
 import Blogs from './components/Blogs/Blogs';
 import Partners from './components/Partners/Partners';
 import Footer from './components/Footer/Footer';
+import PreviewAndCodeWithIframe from './components/Services/PreviewAndCodeWithIframe';
 
 const BannerData = {
   discount: '30% OFF',
@@ -149,6 +150,7 @@ const App = () => {
       <Blogs/>
       <Partners/>
       <Footer/>
+      <PreviewAndCodeWithIframe/>
     </div>
   );
 };
