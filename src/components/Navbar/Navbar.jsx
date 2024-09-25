@@ -12,16 +12,15 @@ const MenuLinks = [
 ];
 
 const Navbar = ({
-  handleLoginPopup,
-  isLoggedIn,
   cartCount,
-  cartItems,
-  removeFromCart,
+  handleOrderPopup
 }) => {
   const [showCart, setShowCart] = useState(false);
-
+  const [quantity, setQuantity] = useState(1);  
+  
   const handleCartClick = () => {
     setShowCart(!showCart);
+    handleOrderPopup();
   };
 
   return (
