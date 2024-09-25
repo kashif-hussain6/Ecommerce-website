@@ -1,4 +1,3 @@
-// Popup.js
 import React, { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import Button from "../Shared/Button";
@@ -18,12 +17,10 @@ const Popup = ({
   const [form, setForm] = useState({
     name: "",
     email: "",
-    address: "",
   });
   const [formErrors, setFormErrors] = useState({
     name: false,
     email: false,
-    address: false,
   });
 
   const handleInputChange = (e) => {
@@ -39,7 +36,6 @@ const Popup = ({
     const errors = {
       name: false,
       email: false,
-      address: false,
     };
 
     if (!form.name) {
@@ -52,11 +48,6 @@ const Popup = ({
       isValid = false;
     }
 
-    if (!form.address) {
-      errors.address = true;
-      isValid = false;
-    }
-
     setFormErrors(errors);
     return isValid;
   };
@@ -64,8 +55,8 @@ const Popup = ({
   const handleLoginClick = () => {
     if (validateForm()) {
       handleLogin();
-      setForm({ name: "", email: "", address: "" });
-      setFormErrors({ name: false, email: false, address: false });
+      setForm({ name: "", email: "" });
+      setFormErrors({ name: false, email: false });
     }
   };
 
@@ -113,20 +104,6 @@ const Popup = ({
               />
               {formErrors.email && (
                 <p className="text-red-500 text-sm">Email is required</p>
-              )}
-
-              <input
-                type="text"
-                name="address"
-                value={form.address}
-                onChange={handleInputChange}
-                placeholder="Address"
-                className={`form-input mb-2 ${
-                  formErrors.address ? "border-red-500" : ""
-                }`}
-              />
-              {formErrors.address && (
-                <p className="text-red-500 text-sm">Address is required</p>
               )}
 
               <div className="flex justify-center mt-4">
