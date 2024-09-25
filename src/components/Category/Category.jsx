@@ -28,7 +28,6 @@ const Category = () => {
             <img src={Image1} alt="" className="w-[320px] absolute bottom-0" />
           </div>
 
-          {/* Second Col */}
           <div className="py-10 pl-5 bg-gradient-to-br from-brandYellow to-brandYellow/90 text-white rounded-3xl relative h-[320px] flex items-end transition-transform duration-300 hover:scale-105">
             <div>
               <div className="mb-4">

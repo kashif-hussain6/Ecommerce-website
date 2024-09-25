@@ -28,7 +28,7 @@ const FooterLinks = [
 
 const Footer = () => {
   return (
-    <div id="footer" className="dark:bg-gray-950"> {/* Added id="footer" */}
+    <div id="footer" className="dark:bg-gray-950"> 
     <div className="dark:bg-gray-950">
       <div className="container">
         <div className="grid md:grid-cols-3 pb-20 pt-5">
@@ -118,7 +118,6 @@ const Footer = () => {
                   </div>
                 }
 
-                {/* social links */}
                 <div className="flex items-center gap-3 mt-6">
                   <a
                     href="https://www.instagram.com/kashif_dayal_313/"
