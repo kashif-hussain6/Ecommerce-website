@@ -23,7 +23,6 @@ const Banner = ({ data }) => {
               {data.date}
             </p>
           </div>
-          {/* Second Column */}
           <div data-aos="zoom-in" className="h-full flex items-center">
             <img
               src={data.image}
