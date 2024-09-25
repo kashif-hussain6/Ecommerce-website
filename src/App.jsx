@@ -4,7 +4,6 @@ import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import Category from './components/Category/Category';
 import Category2 from './components/Category/Category2';
-import Services from './components/Services/Services';
 import Banner from './components/Banner/Banner';
 import Products from './components/Products/Products';
 import AOS from 'aos';
@@ -18,7 +17,6 @@ import watch from './assets/hero/watch.png';
 import Blogs from './components/Blogs/Blogs';
 import Partners from './components/Partners/Partners';
 import Footer from './components/Footer/Footer';
-import PreviewAndCodeWithIframe from './components/Services/PreviewAndCodeWithIframe';
 
 const BannerData = {
   discount: '30% OFF',
@@ -124,7 +122,6 @@ const App = () => {
       <Hero handleOrderPopup={handleOrderPopup} />
       <Category />
       <Category2 />
-      <Services />
       <Banner data={BannerData} />
       <Products 
         orderPopup={orderPopup} 
@@ -150,7 +147,6 @@ const App = () => {
       <Blogs/>
       <Partners/>
       <Footer/>
-      <PreviewAndCodeWithIframe/>
     </div>
   );
 };
