@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { IoMdSearch } from "react-icons/io";
 import { FaCaretDown, FaCartShopping } from "react-icons/fa6";
-import { Link } from "react-scroll"; // Import react-scroll
+import { Link } from "react-scroll"; 
 import DarkMode from "./DarkMode";
 
 const MenuLinks = [
   { id: 1, name: "Home", link: "home" },
-  { id: 2, name: "Shop", link: "shop" }, // Update the link to point to the 'shop' section
+  { id: 2, name: "Shop", link: "shop" }, 
   { id: 3, name: "Footer", link: "footer" },
   { id: 4, name: "Blogs", link: "blogs" },
 ];
@@ -41,10 +41,10 @@ const Navbar = ({
                 {MenuLinks.map((data) => (
                   <li key={data.id}>
                     <Link
-                      to={data.link} // Points to the section's id
-                      smooth={true} // Smooth scroll animation
-                      duration={1000} // Time to scroll
-                      offset={-70} // Adjust for sticky navbar height
+                      to={data.link} 
+                      smooth={true} 
+                      duration={1000}
+                      offset={-70} 
                       className="inline-block px-4 font-semibold text-gray-500 hover:text-black dark:hover:text-white duration-200 cursor-pointer"
                     >
                       {data.name}
