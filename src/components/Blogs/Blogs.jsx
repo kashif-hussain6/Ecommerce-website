@@ -33,7 +33,7 @@ const BlogData = [
 
 const Blogs = () => {
   return (
-    <div className="my-12" id="blogs"> {/* Added id="blogs" for linking */}
+    <div className="my-12" id="blogs"> 
       <div className="container">
         {/* Header section */}
         <Heading title="Recent News" subtitle={"Explore Our Blogs"} />

@@ -1,4 +1,3 @@
-// App.js
 import React from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
@@ -11,7 +10,6 @@ import 'aos/dist/aos.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// Import images
 import headphone from './assets/hero/headphone.png';
 import watch from './assets/hero/watch.png';
 import Blogs from './components/Blogs/Blogs';
@@ -46,7 +44,7 @@ const App = () => {
   const [loginPopup, setLoginPopup] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [cartCount, setCartCount] = React.useState(0);
-  const [cartItems, setCartItems] = React.useState([]); // Cart items state
+  const [cartItems, setCartItems] = React.useState([]); 
 
   const handleOrderPopup = () => {
     if (!isLoggedIn) {
@@ -66,33 +64,28 @@ const App = () => {
     toast.success('Logged in successfully!');
   };
 
-  // Add to Cart function
   const addToCart = (product, quantity) => {
-    // Check if the product is already in the cart
     const existingItem = cartItems.find(item => item.id === product.id);
     if (existingItem) {
-      // Update the quantity
       setCartItems(cartItems.map(item =>
         item.id === product.id
           ? { ...item, quantity: item.quantity + quantity }
           : item
       ));
     } else {
-      // Add new product to cart
       setCartItems([...cartItems, { ...product, quantity }]);
     }
 
-    setCartCount(cartCount + quantity); // Update cart count
+    setCartCount(cartCount + quantity); 
 
     toast.success('Product added to cart!');
   };
 
-  // Remove from Cart function
   const removeFromCart = (productId) => {
     const itemToRemove = cartItems.find(item => item.id === productId);
     if (itemToRemove) {
       setCartItems(cartItems.filter(item => item.id !== productId));
-      setCartCount(cartCount - itemToRemove.quantity); // Update cart count
+      setCartCount(cartCount - itemToRemove.quantity);
       toast.info('Product removed from cart!');
     }
   };
