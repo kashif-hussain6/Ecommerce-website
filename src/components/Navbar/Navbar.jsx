@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IoMdSearch } from "react-icons/io";
-import { FaCaretDown, FaShoppingCart, FaTrashAlt } from "react-icons/fa"; // Replace FaCartShopping with FaShoppingCart
+import { FaCaretDown, FaShoppingCart, FaTrashAlt } from "react-icons/fa"; 
 import { Link } from "react-scroll";
 import DarkMode from "./DarkMode";
 
@@ -18,7 +18,6 @@ const Navbar = ({ cartCount, cartItems, handleOrderPopup, removeFromCart }) => {
     setShowCart(!showCart);
   };
 
-  // Calculate total price for the items in the cart
   const getTotalPrice = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   };
