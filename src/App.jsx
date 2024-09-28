@@ -107,16 +107,17 @@ const App = () => {
 
   return (
     <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 overflow-hidden">
-      <Navbar 
-        handleLoginPopup={handleLoginPopup} 
-        isLoggedIn={isLoggedIn} 
-        cartCount={cartCount}
-        cartItems={cartItems}
-        removeFromCart={removeFromCart}
-        orderPopup={orderPopup} 
-        setOrderPopup={setOrderPopup}
-        handleOrderPopup={handleOrderPopup}  
-      />
+ <Navbar 
+  handleLoginPopup={handleLoginPopup} 
+  isLoggedIn={isLoggedIn} 
+  cartCount={cartCount}
+  cartItems={cartItems} // New prop for cart items
+  removeFromCart={removeFromCart}
+  orderPopup={orderPopup} 
+  setOrderPopup={setOrderPopup}
+  handleOrderPopup={handleOrderPopup}  
+/>
+
       <Hero handleOrderPopup={handleOrderPopup} />
       <Category />
       <Category2 />
