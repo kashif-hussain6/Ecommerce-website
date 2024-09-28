@@ -13,6 +13,7 @@ const Popup = ({
   setQuantity,
   isLoggedIn,
   addToCart,
+  
 }) => {
   const [form, setForm] = useState({
     name: "",

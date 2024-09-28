@@ -26,6 +26,9 @@ const ProductCard = ({ data, handleOrderPopup }) => {
                   textColor="text-white"
                   handler={() => handleOrderPopup(item)}
                 />
+
+
+                
               </div>
             </div>
             <div className="leading-7">
