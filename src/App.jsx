@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
@@ -10,7 +9,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 import headphone from './assets/hero/headphone.png';
 import watch from './assets/hero/watch.png';
@@ -33,11 +31,10 @@ const BannerData2 = {
   discount: "30% OFF",
   title: "Happy Hours",
   date: "14 Jan to 28 Jan",
-  image: watch ,
+  image: watch,
   title2: "Smart Solo",
   title3: "Winter Sale",
-  title4:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque reiciendis",
+  title4: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque reiciendis",
   bgColor: "#2dcc6f",
 };
 
@@ -46,7 +43,8 @@ const App = () => {
   const [loginPopup, setLoginPopup] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [cartCount, setCartCount] = React.useState(0);
-  const [cartItems, setCartItems] = React.useState([]); 
+  const [cartItems, setCartItems] = React.useState([]);
+  const [showCart, setShowCart] = React.useState(false); // New state to control cart popup visibility
 
   const handleOrderPopup = () => {
     if (!isLoggedIn) {
@@ -67,30 +65,34 @@ const App = () => {
   };
 
   const addToCart = (product, quantity) => {
-   
     const existingItem = cartItems.find(item => item.id === product.id);
     if (existingItem) {
-     
       setCartItems(cartItems.map(item =>
         item.id === product.id
           ? { ...item, quantity: item.quantity + quantity }
           : item
       ));
     } else {
-   
       setCartItems([...cartItems, { ...product, quantity }]);
     }
 
     setCartCount(cartCount + quantity);
-
+    setShowCart(true); // Show cart when a product is added
     toast.success('Product added to cart!');
   };
 
   const removeFromCart = (productId) => {
     const itemToRemove = cartItems.find(item => item.id === productId);
     if (itemToRemove) {
-      setCartItems(cartItems.filter(item => item.id !== productId));
-      setCartCount(cartCount - itemToRemove.quantity); 
+      const updatedCartItems = cartItems.filter(item => item.id !== productId);
+      setCartItems(updatedCartItems);
+      setCartCount(cartCount - itemToRemove.quantity);
+      
+      // Hide the popup if the cart is empty after removing an item
+      if (updatedCartItems.length === 0) {
+        setShowCart(false);
+      }
+      
       toast.info('Product removed from cart!');
     }
   };
@@ -107,17 +109,18 @@ const App = () => {
 
   return (
     <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 overflow-hidden">
- <Navbar 
-  handleLoginPopup={handleLoginPopup} 
-  isLoggedIn={isLoggedIn} 
-  cartCount={cartCount}
-  cartItems={cartItems} // New prop for cart items
-  removeFromCart={removeFromCart}
-  orderPopup={orderPopup} 
-  setOrderPopup={setOrderPopup}
-  handleOrderPopup={handleOrderPopup}  
-/>
-
+      <Navbar
+        handleLoginPopup={handleLoginPopup}
+        isLoggedIn={isLoggedIn}
+        cartCount={cartCount}
+        cartItems={cartItems}
+        removeFromCart={removeFromCart}
+        showCart={showCart} // Pass showCart state to Navbar
+        setShowCart={setShowCart} // Pass setShowCart to Navbar to control popup visibility
+        orderPopup={orderPopup}
+        setOrderPopup={setOrderPopup}
+        handleOrderPopup={handleOrderPopup}
+      />
       <Hero handleOrderPopup={handleOrderPopup} />
       <Category />
       <Category2 />
@@ -143,9 +146,9 @@ const App = () => {
         theme="light"
       />
       <Banner data={BannerData2} />
-      <Blogs/>
-      <Partners/>
-      <Footer/>
+      <Blogs />
+      <Partners />
+      <Footer />
     </div>
   );
 };
