@@ -44,7 +44,7 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [cartCount, setCartCount] = React.useState(0);
   const [cartItems, setCartItems] = React.useState([]);
-  const [showCart, setShowCart] = React.useState(false); // New state to control cart popup visibility
+  const [showCart, setShowCart] = React.useState(false); 
 
   const handleOrderPopup = () => {
     if (!isLoggedIn) {
@@ -77,7 +77,7 @@ const App = () => {
     }
 
     setCartCount(cartCount + quantity);
-    setShowCart(true); // Show cart when a product is added
+    setShowCart(true); 
     toast.success('Product added to cart!');
   };
 
@@ -88,7 +88,6 @@ const App = () => {
       setCartItems(updatedCartItems);
       setCartCount(cartCount - itemToRemove.quantity);
       
-      // Hide the popup if the cart is empty after removing an item
       if (updatedCartItems.length === 0) {
         setShowCart(false);
       }

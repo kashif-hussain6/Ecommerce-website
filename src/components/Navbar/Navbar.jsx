@@ -11,18 +11,46 @@ const MenuLinks = [
   { id: 4, name: "Blogs", link: "blogs" },
 ];
 
+<<<<<<< Updated upstream
 const Navbar = ({ cartCount, cartItems, handleOrderPopup, removeFromCart }) => {
   const [showCart, setShowCart] = useState(false);
 
   const handleCartClick = () => {
+=======
+const Navbar = ({ cartCount, cartItems, handleOrderPopup, removeFromCart, showCart, setShowCart }) => {
+  const [isAnimating, setIsAnimating] = useState(false); 
+  const cartPopupRef = useRef(null); 
+
+  const handleCartClick = () => {
+    setIsAnimating(true); 
+>>>>>>> Stashed changes
     setShowCart(!showCart);
   };
 
-  // Calculate total price for the items in the cart
   const getTotalPrice = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
+<<<<<<< Updated upstream
+=======
+  const handleAnimationEnd = () => {
+    setIsAnimating(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (cartPopupRef.current && !cartPopupRef.current.contains(event.target)) {
+        setShowCart(false); 
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside); 
+    };
+  }, [setShowCart]);
+
+>>>>>>> Stashed changes
   return (
     <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40">
       <div className="py-4">
@@ -112,6 +140,7 @@ const Navbar = ({ cartCount, cartItems, handleOrderPopup, removeFromCart }) => {
               )}
             </button>
             {/* Cart Dropdown */}
+<<<<<<< Updated upstream
             {showCart && (
               <div className="absolute right-0 top-16 bg-white dark:bg-gray-800 shadow-md p-4 rounded-lg w-[300px] z-50 transition-transform transform duration-300 ease-in-out scale-100">
                 <h3 className="text-lg font-semibold mb-4">Cart Items</h3>
@@ -132,6 +161,29 @@ const Navbar = ({ cartCount, cartItems, handleOrderPopup, removeFromCart }) => {
                                 ${item.price} x {item.quantity} = ${item.price * item.quantity}
                               </p>
                             </div>
+=======
+            <div
+              ref={cartPopupRef} 
+              className={`absolute right-0 top-16 bg-white dark:bg-gray-800 shadow-md p-4 rounded-lg w-[300px] z-50 transition-transform duration-300 ease-in-out ${
+                showCart ? "scale-100 opacity-100" : "scale-0 opacity-0"
+              }`}
+              onAnimationEnd={handleAnimationEnd} 
+              style={{ transformOrigin: "top right" }} 
+            >
+              <h3 className="text-lg font-semibold mb-4">Cart Items</h3>
+              {cartItems.length > 0 ? (
+                <>
+                  <ul className="space-y-2">
+                    {cartItems.map((item) => (
+                      <li key={item.id} className="flex items-center gap-4 justify-between">
+                        <div className="flex items-center gap-4">
+                          <img src={item.img} alt={item.title} className="w-12 h-12 object-cover rounded" />
+                          <div>
+                            <h4 className="font-semibold">{item.title}</h4>
+                            <p className="text-gray-500 dark:text-gray-300">
+                              ${item.price} x {item.quantity} = ${item.price * item.quantity}
+                            </p>
+>>>>>>> Stashed changes
                           </div>
                           {/* Delete Button */}
                           <button
