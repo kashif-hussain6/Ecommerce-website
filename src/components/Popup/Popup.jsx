@@ -68,7 +68,6 @@ const Popup = ({
 
   return (
     <>
-      {/* Login Popup */}
       {!isLoggedIn && loginPopup && (
         <div className="h-screen w-screen fixed top-0 left-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center">
           <div className="relative w-[300px] p-4 shadow-md bg-white dark:bg-gray-900 dark:text-white duration-200 rounded-xl">
