@@ -114,8 +114,8 @@ const App = () => {
         cartCount={cartCount}
         cartItems={cartItems}
         removeFromCart={removeFromCart}
-        showCart={showCart} // Pass showCart state to Navbar
-        setShowCart={setShowCart} // Pass setShowCart to Navbar to control popup visibility
+        showCart={showCart} 
+        setShowCart={setShowCart} 
         orderPopup={orderPopup}
         setOrderPopup={setOrderPopup}
         handleOrderPopup={handleOrderPopup}
